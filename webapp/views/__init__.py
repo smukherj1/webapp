@@ -1,6 +1,6 @@
 
 def init(app, models):
-    import extutils
-    extutils.app = app
-    extutils.models = models
+    import views_common as vc
+    vc.app = app
+    vc.models = models
     import index

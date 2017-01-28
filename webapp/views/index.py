@@ -1,9 +1,10 @@
 
-from extutils import *
+from views_common import *
 
 @app.route('/')
 def index():
-    return '<html><title>Hello!</title><body><h1>Hello!</h1>Howdy! How ya doin?</body></html>'
+    if session.get('logged_in') is None:
+        return render_template('index.html')
 
 @app.route('/favicon.ico')
 def favicon():

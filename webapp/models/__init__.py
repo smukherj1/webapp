@@ -14,8 +14,13 @@ class ModelTable:
         assert(model is not None)
         self.__table[name] = model
 
+    # Returns None on lookup failure
     def get(self, name):
         return self.__table.get(name, None)
+
+    # Raises KeyError on lookup failure
+    def __getattr__(self, attr):
+        return self.__table[attr]
 
     def lock(self):
         self.anl()
