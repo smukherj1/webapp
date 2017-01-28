@@ -2,7 +2,7 @@
 import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/webapp/")
+sys.path.append("/var/www/webapp/")
 
 from webapp import app as application
 application.secret_key = 'foobar'
