@@ -1,9 +1,12 @@
-<html>
-    <title>Webapp</title>
-    <body>
-        <h1>Welcome!</h1>
-        Welcome to the Webapp homepage!
-        <br>
+{% extends "base.html" %}    
+{% block title %}Welcome!{% endblock %}
+{% block head %}
+{{ super() }}
+    <style type="text/css">.important { color: #336699; }</style>
+{% endblock %}
+{% block content %}
+    <p class="important">Welcome to the Webapp homepage!</p>
+    <p>
         You can login <a href="/login">here</a> or create a new account <a href="/register">here</a>
-    </body>
-</html>
+    </p>
+{% endblock %}

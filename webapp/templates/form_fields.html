@@ -1,0 +1,9 @@
+<table>
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <tr>
+        <td>{{ field.label }}</td>
+        <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+</table>
