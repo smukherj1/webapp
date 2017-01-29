@@ -8,4 +8,4 @@ def index():
 
 @app.route('/favicon.ico')
 def favicon():
-    return __app.send_static_file('favicon.ico')
+    return app.send_static_file('favicon.ico')
