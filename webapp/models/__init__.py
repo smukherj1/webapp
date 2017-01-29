@@ -38,8 +38,13 @@ def __init_db(app):
 def __init_models(app):
     from . import User
 
-    model_table.add('User', User)
+    model_table.add('User', User.User)
     model_table.lock()
+
+    # Now that the db knows about our models
+    # make it generate the necessary tables
+    from .db_handle import db
+    db.create_all()
 
 def init(app):
     __init_db(app)

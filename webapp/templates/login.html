@@ -7,8 +7,10 @@
 {% block content %}
     <p class="important">Enter your details to login</p>
     <form method="POST" action="/login">
-        {{ form.csrf_token  }}
         {% include "form_fields.html" %}
         <input type="submit" value="Login">
     </form>
+    {% if login_error != None %}
+    <div class="field-error"> {{ login_error }} </div>
+    {% endif %}
 {% endblock %}

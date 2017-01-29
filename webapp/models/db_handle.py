@@ -21,4 +21,3 @@ def init(app):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db = SQLAlchemy(app)
     db.drop_all()
-    db.create_all()

@@ -7,7 +7,6 @@
 {% block content %}
     <p class="important">Fill out the following to register</p>
     <form method="POST" action="/register">
-        {{ form.csrf_token  }}
         {% include "form_fields.html" %}
         <input type="submit" value="Register">
     </form>

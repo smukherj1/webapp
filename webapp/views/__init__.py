@@ -11,3 +11,4 @@ def init(app, models):
     from . import index
     from . import register
     from . import login
+    from . import home

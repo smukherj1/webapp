@@ -4,6 +4,13 @@
     <tr>
         <td>{{ field.label }}</td>
         <td>{{ field }}</td>
+        <td>
+            <div class="field-error">
+                {% for ierror in field.errors %}
+                <p> {{ ierror }} </p>
+                {% endfor %}
+            </div>
+        </td>
     </tr>
     {% endfor %}
 </table>
