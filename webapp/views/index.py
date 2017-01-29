@@ -1,5 +1,5 @@
 
-from views_common import *
+from .views_common import *
 
 @app.route('/')
 def index():

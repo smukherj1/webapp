@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField
 from wtforms.validators import DataRequired
-from views_common import *
+from .views_common import *
 
 class LoginForm(FlaskForm):
     user_id = IntegerField('UserID', validators=[DataRequired()])

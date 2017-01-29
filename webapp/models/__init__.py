@@ -32,14 +32,16 @@ class ModelTable:
 model_table = ModelTable()
 
 def __init_db(app):
-    import db_handle
+    from . import db_handle
     db_handle.init(app)
 
 def __init_models(app):
-    import User
+    from . import User
+
     model_table.add('User', User)
+    model_table.lock()
 
 def init(app):
     __init_db(app)
     __init_models(app)
-    model_table.lock()
+
