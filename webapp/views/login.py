@@ -11,7 +11,7 @@ def login():
     form = LoginForm()
     login_error = None
     if form.validate_on_submit():
-        User = models.get('User')
+        User = models.User
         user_id = form.user_id.data
         user = User.query.filter_by(id=user_id).first()
         if user is not None:

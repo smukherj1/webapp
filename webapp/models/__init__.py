@@ -3,6 +3,14 @@ class ModelTable:
     def __init__(self):
         self.__table = {}
         self.__locked = False
+        self.__db = None
+
+    def set_db(self, db):
+        self.anl()
+        self.__db = db
+
+    def db(self):
+        return self.__db
 
     # Assert not locked
     def anl(self):
@@ -39,12 +47,13 @@ def __init_models(app):
     from . import User
 
     model_table.add('User', User.User)
-    model_table.lock()
 
     # Now that the db knows about our models
     # make it generate the necessary tables
     from .db_handle import db
     db.create_all()
+    model_table.set_db(db)
+    model_table.lock()
 
 def init(app):
     __init_db(app)
