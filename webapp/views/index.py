@@ -18,6 +18,7 @@ def reset_db():
     if os.environ.get('WEBAPP_UNIT_TEST') != None:
         models.db().drop_all()
         models.db().create_all()
+        session.clear()
         return 'OK'
     else:
         # Thou hast been forbidden
