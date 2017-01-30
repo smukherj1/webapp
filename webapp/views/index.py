@@ -3,10 +3,10 @@ from .views_common import *
 
 @app.route('/')
 def index():
-    if session.get('user') is None:
+    if session.get('user_id') is None:
         return render_template('index.html')
     else:
-        return redirect('/')
+        return redirect('/home')
 
 @app.route('/favicon.ico')
 def favicon():

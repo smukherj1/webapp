@@ -23,9 +23,9 @@ def login():
 
 @app.route('/logout')
 def logout():
-    if 'user' in session:
-        session.pop('user')
+    if 'user_id' in session:
+        session.pop('user_id')
     return redirect('/')
 
 def login_session(user):
-    session['user'] = user
+    session['user_id'] = user.id

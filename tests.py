@@ -36,6 +36,10 @@ class WebappTest(unittest.TestCase):
         self.__test_get('/login')
         return
 
+    def test_get_register(self):
+        self.__test_get('/register')
+        return
+
     def test_registration(self):
         self.assertEqual(1, 1)
         return

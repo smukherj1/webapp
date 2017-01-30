@@ -10,4 +10,7 @@
         {% include "form_fields.html" %}
         <input type="submit" value="Register">
     </form>
+    {% if register_error != None %}
+        <div class="field-error"> {{ register_error }} </div>
+    {% endif %}
 {% endblock %}
