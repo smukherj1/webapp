@@ -44,9 +44,9 @@ def __init_db(app):
     db_handle.init(app)
 
 def __init_models(app):
-    from . import User
+    from . import Account
 
-    model_table.add('User', User.User)
+    model_table.add('Account', Account.Account)
 
     # Now that the db knows about our models
     # make it generate the necessary tables

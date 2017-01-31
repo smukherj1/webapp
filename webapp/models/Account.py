@@ -1,6 +1,6 @@
 from .db_handle import db
 
-class User(db.Model):
+class Account(db.Model):
     username = db.Column(db.String(20), primary_key=True)
     password = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(120), nullable=False)
@@ -11,5 +11,5 @@ class User(db.Model):
         self.email = email
 
     def __repr__(self):
-        return '<User %s, %s>' % (self.username, self.email)
+        return '<Account %s, %s>' % (self.username, self.email)
 

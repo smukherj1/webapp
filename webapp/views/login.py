@@ -12,9 +12,9 @@ def login():
     form = LoginForm()
     login_error = None
     if form.validate_on_submit():
-        User = models.User
+        Account = models.Account
         username = form.username.data
-        user = User.query.filter_by(username=username).first()
+        user = Account.query.filter_by(username=username).first()
         # Password check. TODO: Salting
         if user is not None and\
             form.password.data != user.password:

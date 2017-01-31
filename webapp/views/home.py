@@ -6,7 +6,7 @@ def home():
     if session.get('username') is None:
         return redirect('/')
     username = session.get('username')
-    user = models.User.query.filter_by(username=username).first()
+    user = models.Account.query.filter_by(username=username).first()
     if user is None:
         # Stale cookie?
         return redirect('/logout')
