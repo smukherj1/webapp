@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField
+from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired
 from .views_common import *
 
 class LoginForm(FlaskForm):
-    user_id = IntegerField('UserID', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -12,20 +13,24 @@ def login():
     login_error = None
     if form.validate_on_submit():
         User = models.User
-        user_id = form.user_id.data
-        user = User.query.filter_by(id=user_id).first()
+        username = form.username.data
+        user = User.query.filter_by(username=username).first()
+        # Password check. TODO: Salting
+        if user is not None and\
+            form.password.data != user.password:
+            user = None
         if user is not None:
             login_session(user)
             return redirect('/home')
         else:
-            login_error = '%d is not a valid user id'%user_id
+            login_error = '%s is not a valid username or the password was incorrect'%username
     return render_template('login.html', form=form, login_error=login_error)
 
 @app.route('/logout')
 def logout():
-    if 'user_id' in session:
-        session.pop('user_id')
+    if 'username' in session:
+        session.pop('username')
     return redirect('/')
 
 def login_session(user):
-    session['user_id'] = user.id
+    session['username'] = user.username

@@ -3,10 +3,10 @@ from .views_common import *
 
 @app.route('/home')
 def home():
-    if session.get('user_id') is None:
+    if session.get('username') is None:
         return redirect('/')
-    user_id = session.get('user_id')
-    user = models.User.query.filter_by(id=user_id).first()
+    username = session.get('username')
+    user = models.User.query.filter_by(username=username).first()
     if user is None:
         # Stale cookie?
         return redirect('/logout')
